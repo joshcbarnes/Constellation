@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>constellation-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Constellation Service</name>
+
+    <parent>
+        <groupId>com.allocadia</groupId>
+        <artifactId>constellation</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.allocadia</groupId>
+            <artifactId>constellation-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- TEST -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.allocadia</groupId>
+                <artifactId>rosetta-maven-plugin</artifactId>
+                <version>${rosetta.version}</version>
+                <configuration>
+                    <xmlConfig>classpath:/interface.xml</xmlConfig>
+                    <entityPackageName>com.allocadia.constellation.model</entityPackageName>
+                    <outputDirectory>${project.build.directory}/generated-sources/rosetta</outputDirectory>
+                    <conductorPackageName>com.allocadia.constellation.conductor</conductorPackageName>
+                    <managerPackageName>com.allocadia.constellation.manager</managerPackageName>
+                    <contextPath>/rest</contextPath>
+                    <graphUIOutputDirectory>${project.build.directory}/allocadia/rosetta</graphUIOutputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rosetta-java-framework</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

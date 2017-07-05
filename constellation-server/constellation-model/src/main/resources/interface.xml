@@ -1,0 +1,24 @@
+<interface
+    xmlns="http://devtools.allocadia.com/rosetta/interface"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://devtools.allocadia.com/rosetta/interface http://devtools.allocadia.com/rosetta/interface-1.10.xsd">
+    
+    <root>
+        <id/>
+        <relation name="apps" type="App"/>
+    </root>
+    
+    <enum name="FrontEndType">
+        <value>angular</value>
+    </enum>
+    
+    <enum name="BackEndType">
+        <value>java</value>
+    </enum>
+    
+    <entity name="App">
+        <id/>
+        <property name="frontend" type="FrontEndType"/>
+        <property name="backend" type="BackEndType"/>
+    </entity>
+</interface>
